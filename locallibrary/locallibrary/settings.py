@@ -18,9 +18,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Add support for env variables from file if defined
 import os
-from dotenv import load_dotenv
-env_path = load_dotenv(os.path.join(BASE_DIR, '.env'))
-load_dotenv(env_path)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -136,14 +133,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
 
-# Update database configuration from $DATABASE_URL environment variable (if defined)
-import dj_database_url
-
-if 'DATABASE_URL' in os.environ:
-    DATABASES['default'] = dj_database_url.config(
-        conn_max_age=500,
-        conn_health_checks=True,
-    )
 
 
 # Static files (CSS, JavaScript, Images)

@@ -1,6 +1,6 @@
- from django.shortcuts import render
+from django.shortcuts import render
 
- from .models import Book, Author, BookInstance, Genre
+from .models import Book, Author, BookInstance, Genre
 
 def index(request):
     """View function for home page of site."""
@@ -29,7 +29,7 @@ def index(request):
     # Render the HTML template index.html with the data in the context variable
     return render(request, 'index.html', context=context)
     
-    from django.views import generic
+from django.views import generic
 
 class BookListView(generic.ListView):
     model = Book
@@ -41,7 +41,7 @@ class BookListView(generic.ListView):
     model = Book
     paginate_by = 10
 
-    from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 class LoanedBooksByUserListView(LoginRequiredMixin,generic.ListView):
     """Generic class-based view listing books on loan to current user."""
@@ -98,9 +98,11 @@ def renew_book_librarian(request, pk):
 
     return render(request, 'catalog/book_renew_librarian.html', context)
 
-    from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from .models import Author
+from django.contrib.auth.mixins import PermissionRequiredMixin
+
 
 class AuthorCreate(PermissionRequiredMixin, CreateView):
     model = Author
